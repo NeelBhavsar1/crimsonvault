@@ -25,6 +25,9 @@
 *.pem
 
 # debug
+
+.env
+.node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -39,3 +42,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/app/generated/prisma
