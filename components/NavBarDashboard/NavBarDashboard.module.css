@@ -159,11 +159,12 @@
     }
 
     .actionbuttons {
-        gap: 5px;
+        gap: 8px;
     }
 
-    .userbutton {
-        display: none;
+    .customavatarsize {
+        width: 35px;
+        height: auto;
     }
 
     .togglebtn {
@@ -171,68 +172,5 @@
         height: 33px;
     }
 
-    .mobilemenu {
-        display: block;
-        position: absolute;
-        top: 4.5rem;
-        border-radius: 10px;
-        right: 0;
-        padding: 1rem;
-        border-left: 1.1px solid #ccc;
-        border-bottom: 1.5px solid #ccc;
-        background-color: var(--navbarbackground);
-        color: var(--textcolor);
-    }
-
-    .mobilemenuwrapper {
-        position: relative;
-    }
-
-    .mobilemenu ul {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        list-style-type: none;
-        gap: 10px;
-        font-size: 16px;
-        margin-bottom: 20px;
-    }
-
-    .mobilemenu ul li {
-        display: flex;           
-        align-items: center;     
-        justify-content: flex-start; 
-        width: 100%;            
-        cursor: pointer;        
-        padding: 4px 0;         
-    }
-
-    .mobilelogin {
-        padding: 8px 12px;
-        border-radius: 12px;
-        border: 1px solid #ccc;
-        background-color: var(--foreground);
-        color: var(--background);
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-    }
-
-    .userbutton {
-        display: none;
-    }
-
-    .mobileAvatar {
-        width: 50px;      
-        height: auto;    
-        border-radius: 50%; 
-    }
-
-    .getstarted {
-        display: none;
-    }
-
-    
-
-    
+  
 }

@@ -57,9 +57,6 @@ const NavBarHome = () => {
           <li>About Us</li>
           <li>Features</li>
           <li>Contact</li>
-          {user && (
-            <li>Dashboard</li>
-          )}
         </ul>
       </div>
 
