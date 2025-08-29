@@ -7,6 +7,7 @@
   --navbarbackground: #ffffff;
   --textcolor: #171717;
   --navbarbackgroundtext: #171717;
+  --footerbackground: #1e1e1e;
   --font-poppins: 'Poppins', sans-serif;
 }
 
@@ -35,6 +36,7 @@ body {
 
 
 .dark {
+  --footerbackground: #1e1e1e;
   --background: #121212;
   --foreground: #ebe5e5;
   --navbarbackground: #1e1e1e;
