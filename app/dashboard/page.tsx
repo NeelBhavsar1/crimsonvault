@@ -9,11 +9,12 @@ import AiInsights from '@/components/AiInsights/AiInsights'
 import ExpenseStats from '@/components/ExpenseStats/ExpenseStats'
 import RecordChart from '@/components/RecordChart/RecordChart'
 import RecordHistory from '@/components/RecordHistory/RecordHistory'
+import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner'
 
 const page = () => {
   const { user, isLoaded } = useUser();
 
-  if (!isLoaded) return <p>Loading page...</p>
+  if (!isLoaded) return <div className={styles.loadingspinner}><LoadingSpinner /></div>
 
   return (
     <div className={styles.pageContainer}>

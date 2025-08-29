@@ -1,10 +1,56 @@
 "use client"
 
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './AddRecord.module.css'
 import { motion } from 'framer-motion'
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 
 const AddRecord = () => {
+
+  const [description, setDescription] = useState('')
+  const [amount, setAmount] = useState('')
+  const [date, setDate] = useState('')
+  const [category, setCategory] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState('')
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setLoading(true)
+    setMessage('')
+
+    try {
+      const res = await fetch("/api/expenses", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          description,
+          amount,
+          date,
+          category,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        setMessage(data.error || "Failed to add expense.")
+      } else {
+        setMessage("Expense successfully added!")
+        setDescription("")
+        setAmount("")
+        setDate("")
+        setCategory("")
+      }
+
+    } catch (error) {
+      console.error(error)
+      setMessage("Failed to create expense.")
+    } finally {
+      setLoading(false)
+    }
+
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -14,24 +60,24 @@ const AddRecord = () => {
         </div>
       </div>
       <div className={styles.base}>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
 
           <div className={styles.formtop}>
             <div className={styles.formgroup}>
               <label htmlFor='description'>Description</label>
-              <input type='text' id='description' name='description' placeholder='Drinks, groceries, etc...' required/>
+              <input type='text' id='description' name='description' value={description} placeholder='Drinks, groceries, etc...' required onChange={(e) => setDescription(e.target.value)}/>
             </div>
 
             <div className={styles.formgroup}>
               <label htmlFor='date'>Date</label>
-              <input type='date' id='date' name='date' required/>
+              <input type='date' id='date' name='date' value={date} required onChange={(e) => setDate(e.target.value)}/>
             </div>
           </div>
 
           <div className={styles.formbottom}>
             <div className={styles.formgroup}>
               <label htmlFor="category">Category</label>
-              <select id="category" name="category" required>
+              <select id="category" name="category" value={category} required onChange={(e) => setCategory(e.target.value)}>
                 <option value="">Select a category</option>
                 <option value="Food">🍔 Food & Dining</option>
                 <option value="Transport">🚗 Transport</option>
@@ -45,14 +91,18 @@ const AddRecord = () => {
 
             <div className={styles.formgroup}>
               <label htmlFor='amount'>Amount (£)</label>
-              <input type='number' id='amount' name='amount' placeholder='10' required/>
+              <input type='number' id='amount' name='amount' value={amount} placeholder='10' required onChange={(e) => setAmount(e.target.value)}/>
             </div>
           </div>
           <motion.button 
+          type='submit'
           whileHover={{scale: 1.05}}
           whileTap={{scale: 0.95}}
-          className={styles.submitbtn}>Add Expense</motion.button>
+          className={styles.submitbtn}
+          disabled={loading}
+          >{loading ? <LoadingSpinner /> : "Add Expense"}</motion.button>
         </form>
+        {message && <p className={styles.returnmessage}>✅{message}</p>}
       </div>
     </div>
   )
