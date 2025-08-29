@@ -41,6 +41,7 @@
 
 .logo p {
     font-size: 20px;
+    color: var(--foreground);
 }
 
 .logo p span {

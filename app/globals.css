@@ -9,6 +9,7 @@
   --navbarbackgroundtext: #171717;
   --footerbackground: #1e1e1e;
   --font-poppins: 'Poppins', sans-serif;
+  --dashboardcolor: #171717;
 }
 
 /* REMOVE THIS IF ERROR ISNT FIXED */
@@ -26,7 +27,7 @@ body::-webkit-scrollbar {
   background: transparent; 
 }
 
-
+ 
 
 html,
 body {
@@ -42,6 +43,7 @@ body {
   --navbarbackground: #1e1e1e;
   --textcolor: #F5F5F5;
   --navbarbackgroundtext: #ebe5e5;
+  --dashboardcolor: #a3e635;
 }
 
 body {
