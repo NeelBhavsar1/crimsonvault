@@ -37,13 +37,14 @@ const page = () => {
                 </div>
               </div>
             </div>
+            <AddRecord />
           </div>
           <div className={styles.right}>
             <RecordChart />
             <ExpenseStats />
           </div>
         </div>
-        <AddRecord />
+        
         <AiInsights />
         <RecordHistory />
       </div>
