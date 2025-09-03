@@ -1,0 +1,154 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: var(--navbarbackground);
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--navbarbackgroundtext);
+    margin-bottom: 0.3rem;
+}
+
+
+.subtitle {
+    font-size: 0.95rem;
+    color: var(--dashboardcolor);
+    line-height: 1.4;
+}
+
+.recordgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.recorditem {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background-color: var(--background);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    height: 140px;
+}
+
+.deleteBtn {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: red;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    z-index: 10; 
+    transition: opacity 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recorditem:hover .deleteBtn {
+    opacity: 1;
+}
+
+.recorditem:hover {
+    transform: translateY(-4px);
+}
+
+.headeritem {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.headerleft {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.recorddate {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.recordtext {
+    font-weight: 1rem;
+}
+
+.recordamount {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--dashboardcolor);
+}
+
+.recordtop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.body {
+    margin-top: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.categoryname {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--dashboardcolor);
+}
+
+.recordtext {
+    margin-top: 3px;
+    font-size: 0.95rem;
+    color: grey;
+}
+
+.norecordmessage {
+    font-size: 0.95rem;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+

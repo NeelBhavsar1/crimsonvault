@@ -1,0 +1,80 @@
+/*DO NOT CHANGE / DELETE*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,900&display=swap');
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --navbarbackground: #ffffff;
+  --textcolor: #171717;
+  --navbarbackgroundtext: #171717;
+  --font-poppins: 'Poppins', sans-serif;
+  --dashboardcolor: #171717;
+  --expensebackground: black;
+  --expensefont: #ffffff;
+  --restpage: #ececec;
+  --insightbackground: #ececec;
+  
+}
+
+/* REMOVE THIS IF ERROR ISNT FIXED */
+html, body, #__next {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  
+}
+
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; 
+}
+
+ 
+
+html,
+body {
+  max-width: 100vw;
+}
+
+
+
+.dark {
+  --background: #121212;
+  --foreground: #ebe5e5;
+  --navbarbackground: #1e1e1e;
+  --textcolor: #F5F5F5;
+  --navbarbackgroundtext: #ebe5e5;
+  --dashboardcolor: #a3e635;
+  --expensebackground: #2c2c2c;
+  --expensefont: #a3e635;
+  --restpage: #1e1e1e;
+  --insightbackground: #2c2c2c;
+}
+
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+  font-family: var(--font-poppins), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}

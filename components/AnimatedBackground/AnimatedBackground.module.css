@@ -1,0 +1,320 @@
+.animatedBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--background);
+  z-index: -1;
+}
+
+.particlesContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  background-color: rgba(23, 23, 23, 0.6);
+  border-radius: 50%;
+  animation: floatAndFade 6s infinite ease-in-out alternate;
+}
+
+@keyframes floatAndFade {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+}
+
+.diagonalBoxesContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.diagonalBox {
+  position: absolute;
+  background-color: rgba(23, 23, 23, 0.05);
+  transform: rotate(45deg);
+  animation: moveDiagonal 15s infinite linear;
+}
+
+@keyframes moveDiagonal {
+  0% {
+    transform: translate(0, 0) rotate(45deg);
+  }
+  100% {
+    transform: translate(100vw, 100vh) rotate(45deg);
+  }
+}
+
+.floatingOrbs {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.floatingOrb {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(23, 23, 23, 0.3) 0%, rgba(23, 23, 23, 0) 70%);
+  border-radius: 50%;
+  animation: floatOrb 10s infinite ease-in-out alternate;
+}
+
+@keyframes floatOrb {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(20px, 30px) scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+}
+
+.spiralLines {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.spiralLine {
+  position: absolute;
+  width: 2px;
+  height: 50px;
+  background-color: rgba(23, 23, 23, 0.2);
+  transform-origin: center center;
+  animation: spiralRotate 8s infinite linear;
+}
+
+@keyframes spiralRotate {
+  0% {
+    transform: rotate(0deg) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: rotate(180deg) scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotate(360deg) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.gradientWaves {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.wave1,
+.wave2,
+.wave3 {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  border-radius: 40%;
+  opacity: 0.1;
+  animation: waveMovement 20s infinite linear;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.1), transparent);
+}
+
+.wave1 {
+  top: -50%;
+  left: -50%;
+  animation-delay: 0s;
+}
+
+.wave2 {
+  top: -70%;
+  left: -30%;
+  animation-delay: -7s;
+}
+
+.wave3 {
+  top: -60%;
+  left: -60%;
+  animation-delay: -14s;
+}
+
+@keyframes waveMovement {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.neuralNetwork {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.neuralConnection {
+  position: absolute;
+  height: 1px;
+  background-color: rgba(23, 23, 23, 0.1);
+  transform-origin: left center;
+  animation: drawLine 3s infinite ease-in-out alternate;
+}
+
+@keyframes drawLine {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+}
+
+.sparkles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: rgba(23, 23, 23, 0.8);
+  border-radius: 50%;
+  animation: twinkle 2s infinite ease-in-out alternate;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+:global(.dark) .particle {
+  background-color: rgba(235, 229, 229, 0.6);
+}
+
+:global(.dark) .diagonalBox {
+  background-color: rgba(235, 229, 229, 0.05);
+}
+
+:global(.dark) .floatingOrb {
+  background: radial-gradient(circle, rgba(235, 229, 229, 0.3) 0%, rgba(235, 229, 229, 0) 70%);
+}
+
+:global(.dark) .spiralLine {
+  background-color: rgba(235, 229, 229, 0.2);
+}
+
+:global(.dark) .neuralConnection {
+  background-color: rgba(235, 229, 229, 0.1);
+}
+
+:global(.dark) .sparkle {
+  background-color: rgba(235, 229, 229, 0.8);
+}
+
+:global(.dark) .wave1 {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+}
+
+:global(.dark) .wave2 {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent);
+}
+
+:global(.dark) .wave3 {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent);
+}
+
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.videoBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 800px;
+  padding: 2rem;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}

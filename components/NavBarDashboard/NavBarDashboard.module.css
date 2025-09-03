@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Oswald:wght@200..700&family=Outfit:wght@100&family=Poppins:ital,wght@0,400;0,600;0,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=WDXL+Lubrifont+SC&display=swap');
+
+.container {
+    padding: 0.2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0px 0px 10px 10px;
+    position: fixed;
+    width: 100%;
+    z-index: 10000;
+    background-color: var(--navbarbackground);
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1px;
+}
+
+.crimsonimage {
+    width: 65px;
+    height: auto;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+:global(.dark) .crimsonimage {
+    filter: invert(100%);
+}
+
+.crimsonimage:hover {
+    transform: scale(1.1);
+}
+
+.logo p {
+    font-size: 20px;
+    color: var(--foreground);
+}
+
+.logo p span {
+    font-size: 22px;
+    color: rgb(156, 30, 30);
+    font-weight: 700;
+}
+
+.quicklinks {
+    padding: 1rem;
+    border-radius: 14px;
+}
+
+.quicklinks ul {
+    display: flex;
+    list-style-type: none;
+    gap: 20px;
+    font-size: 18px;
+    max-width: 600px;
+}
+
+.quicklinks ul li {
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: all 0.1s ease-in-out;
+}
+
+.quicklinks ul li:hover {
+    border-radius: 12px;
+    background-color: var(--foreground);
+    color: var(--background);
+}
+
+.actionbuttons {
+    display: flex;
+    margin-right: 15px;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.getstarted {
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    background-color: var(--foreground);
+    color: var(--background);
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 10000000;
+    overflow-y: hidden;
+}
+
+.customavatarsize {
+    width: 40px;
+    height: auto;
+}
+
+.userbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.togglebtn {
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 30%;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid #ccc;
+    width: 40px;
+    height: 40px;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.hamburger {
+    display: none;
+}
+
+.mobilemenu {
+    display: none;
+}
+
+
+@media(max-width:768px) {
+    .logo p {
+        font-size: 18px;
+    }
+
+    .logo p span {
+        font-size: 19px;
+    }
+
+    .quicklinks {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+        background-color: transparent;
+        color: var(--foreground);
+        border-radius: 4px;
+        outline: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border: none;
+    }
+
+    .actionbuttons {
+        gap: 8px;
+    }
+
+    .customavatarsize {
+        width: 35px;
+        height: auto;
+    }
+
+    .togglebtn {
+        width: 33px;
+        height: 33px;
+    }
+
+  
+}
