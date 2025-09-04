@@ -26,6 +26,7 @@ const AiInsights = () => {
       setLoading(true)
       const res = await fetch("/api/ai-insights")
       const data = await res.json()
+      console.log("Ai insights fetched:", data)
       setInsights(data)
     } catch (error) {
       console.error("Failed to fetch ai insights", error)
@@ -54,14 +55,14 @@ const AiInsights = () => {
         <div className={styles.bodytop}>
           <div className={styles.bodytopleft}>
             <h3>High Spending</h3>
-            {loading ? <LoadingSpinner /> : <ReactMarkdown>{insights.highSpending}</ReactMarkdown>}
+            {loading ? <LoadingSpinner /> : <p>{insights.highSpending}</p>}
           </div>
           <div className={styles.bodytopright}>
             <h3>Spending Tips</h3>
             {loading ? <LoadingSpinner /> : (
-              <ReactMarkdown>
-                {insights.savingsTips.join("\n\n- ")}
-              </ReactMarkdown>
+              <p>
+                {(insights.savingsTips ?? []).map(tip => `- ${tip}`).join("\n")}
+              </p>
             )}
           </div>
         </div>
@@ -70,14 +71,14 @@ const AiInsights = () => {
           <div className={styles.bodybottomleft}>
             <h3>Lifestyle Tips</h3>
             {loading ? <LoadingSpinner /> : (
-              <ReactMarkdown>
-                {insights.lifestyleTips.join("\n\n- ")}
-              </ReactMarkdown>
+              <p>
+                {(insights.lifestyleTips ?? []).map(tip => `- ${tip}`).join("\n")}
+              </p>
             )}
           </div>
           <div className={styles.bodybottomright}>
             <h3>Upcoming Expenses</h3>
-            {loading ? <LoadingSpinner /> : <ReactMarkdown>{insights.upcomingExpenses}</ReactMarkdown>}
+            {loading ? <LoadingSpinner /> : <p>{insights.upcomingExpenses}</p>}
           </div>
         </div>
 

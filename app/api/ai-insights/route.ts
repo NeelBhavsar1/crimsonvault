@@ -1,10 +1,8 @@
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
-import { GoogleGenAI } from "@google/genai";
+import OpenAI from "openai";
 
-
-const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
 export async function GET(req: Request) {
     try {
@@ -17,45 +15,62 @@ export async function GET(req: Request) {
             where: {userId: clerkUserId},
             orderBy: {date: 'desc'}
         })
+        console.log("User Records", records)
 
-        const prompt = `
-            You are a financial assistant.
-            Analyze these expense records and give actionable suggestions to improve the user's spending.
 
-            Provide your output **strictly as a single JSON object**. Do not include any additional text, markdown formatting, or explanations.
-            The JSON object must have exactly these four keys:
-            {
-            "highSpending": "Warn about categories where spending is high",
-            "savingsTips": ["Suggestions to save money"],
-            "lifestyleTips": ["Tips about lifestyle adjustments"],
-            "upcomingExpenses": "Warnings about upcoming big expenses"
-            }
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            model: "deepseek/deepseek-r1-0528",
+            messages: [
+                {
+                    role: "system",
+                    content: `
+                    You are a financial assistant.
+                    Analyze the expense records and provide actionable financial advice.
+                    All amounts must be expressed in £. 
 
-            The records are in £:
-            ${JSON.stringify(records)}
-        `;
+                    Output STRICT JSON ONLY, using this exact format:
 
-        const response = await ai.models.generateContent({
-            model: "gemini-2.5-flash",
-            contents: prompt,
+                    {
+                    "highSpending": "string describing categories with high spending and the amounts in £. If spending is normal, indicate 'No high spending detected'.",
+                    "savingsTips": ["string with suggestions to save money, including £ amounts if applicable. If none, provide general tips."],
+                    "lifestyleTips": ["string with lifestyle adjustments or recommendations. If none, provide general lifestyle advice."],
+                    "upcomingExpenses": "string listing any upcoming big expenses with amounts in £. If none, say 'No upcoming big expenses'."
+                    }
+                    `
+                },
+                {
+                    role: "user",
+                    content: JSON.stringify(records)
+                }
+            ],
+            response_format: {type: "json_object"},
+            max_tokens: 1000
         })
+    });
 
-        let insightData = {};
-            try {
-            insightData = JSON.parse(response.text ?? "{}");
-            } catch (err) {
-            console.error("AI JSON parse failed:", response.text);
-            insightData = {
-                highSpending: "AI output not valid JSON",
-                savingsTips: [],
-                lifestyleTips: [],
-                upcomingExpenses: ""
-            };
-            }
+    const data = await response.json()
+    let insightData = {};
+    try {
+    insightData = typeof data.choices?.[0]?.message?.content === "string"
+        ? JSON.parse(data.choices[0].message.content)
+        : data.choices?.[0]?.message?.content ?? {};
+    } catch (err) {
+    console.error("Failed to parse AI JSON:", err);
+    insightData = {
+        highSpending: "",
+        savingsTips: [],
+        lifestyleTips: [],
+        upcomingExpenses: ""
+    };
+    }
 
-            return NextResponse.json(insightData); 
-
-        
+    return NextResponse.json(insightData)
 
         
 
