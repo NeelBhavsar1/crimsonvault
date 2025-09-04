@@ -26,7 +26,6 @@ const AiInsights = () => {
       setLoading(true)
       const res = await fetch("/api/ai-insights")
       const data = await res.json()
-      console.log("Ai insights fetched:", data)
       setInsights(data)
     } catch (error) {
       console.error("Failed to fetch ai insights", error)
@@ -48,7 +47,7 @@ const AiInsights = () => {
         </div>
         <div className={styles.right}>
           <p className={styles.timing}> </p>
-          <button className={styles.reloadbutton} onClick={fetchInsights}><Image src="/refresh.png" alt='refresh icon' width={50} height={50} className={styles.reloadicon}/></button>
+          <button disabled={loading} className={styles.reloadbutton} onClick={fetchInsights}><Image src="/refresh.png" alt='refresh icon' width={50} height={50} className={styles.reloadicon} /></button>
         </div>
       </div>
       <div className={styles.body}>

@@ -23,7 +23,7 @@ const page = () => {
         <section id="home">
         <div className={styles.hero} >
           <div className={styles.bgvideo}>
-            {/*<AnimatedBackground />*/}
+            <AnimatedBackground />
           </div>
           <div className={styles.herocontent}>
             <h1>Welcome to Crimson<span>Vault</span></h1>

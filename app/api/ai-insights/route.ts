@@ -15,7 +15,7 @@ export async function GET(req: Request) {
             where: {userId: clerkUserId},
             orderBy: {date: 'desc'}
         })
-        console.log("User Records", records)
+        
 
 
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
